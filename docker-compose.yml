@@ -1,11 +1,10 @@
 version: "3.9"
 services:
   base: &base
-    image: geo-parser_build
+    image: thulirpygeo
     working_dir: /code
     volumes:
       - .:/code
-      - /Users/rajanp/research/images/Bulk Order known-good-tn/Landsat 8 OLI_TIRS C1 Level-1/LC08_L1TP_143054_20200730_20200807_01_T1:/tmp
   env:
     <<: *base
     command: env
@@ -24,6 +23,8 @@ services:
   build:
     <<: *base
     command: ls
+  jupyterlab:
+    <<: *base
 
 volumes:
   logvolume01: {}

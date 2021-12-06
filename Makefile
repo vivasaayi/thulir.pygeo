@@ -1,6 +1,6 @@
 build:
 	#@docker-compose run build
-	docker build -t geo-parser_build .
+	docker build -t thulirpygeo .
 	
 env: 
 	@docker-compose run env
@@ -16,3 +16,6 @@ shell:
 
 run: 
 	@docker-compose run run
+
+jupyterlab:
+	@docker-compose run
