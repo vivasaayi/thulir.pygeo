@@ -88,7 +88,7 @@ class LandsatDataUtils:
             if(ix == 9 or ix == 8):
                 continue
             key = "b" + str(ix)
-            band_file_names[key] = os.path.join(source_dir + "_T1_SR_B" + str(ix) + ".TIF")
+            band_file_names[key] = os.path.join(source_dir, file_pattern + "_T1_SR_B" + str(ix) + ".TIF")
 
         print(band_file_names)
         return band_file_names
