@@ -1,3 +1,5 @@
 django
 gdal
 numpy
+click
+boto3

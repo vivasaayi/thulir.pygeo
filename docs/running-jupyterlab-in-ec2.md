@@ -21,4 +21,18 @@ make jupyterlab
 
 ## Access Juputerlab
 
-Follow the instructions on the logs
+Follow the instructions on the logs to access the Jupyterlab
+
+## Install python packages
+
+> Can this be done in docker composer step? We need to install the modules in the correct environment
+
+```shell
+pip install -r requirements.txt
+```
+
+## Run CLI
+
+```shell
+python ./geoparser/cli/cli.py landsat extract-tiles /data/landsat /data/landsat-tiles
+```
