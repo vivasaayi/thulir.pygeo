@@ -103,7 +103,28 @@ class LandsatDataUtils:
 
         return band_data
 
-    def calculate_ndvi(self, file_pattern):
+    def calculate_ndvi(self, dirname, targetdir):
+        source_files = file_utils.get_files_in_folder(dirname);
+        destination_files = file_utils.get_files_in_folder(targetdir);
+
+        for source_file in source_files:
+            if("SR_B1.TIF" not in source_file):
+                continue
+
+            source_pattern = source_file.replace("_T1_SR_B1.TIF", "")
+
+            band_files = self.get_band_file_names(source_pattern)
+            band_data = self.load_band_data(band_files)
+
+            ix_calculator = IndexCalculator()
+            indices = ix_calculator.calculate_indices(band_data)
+
+            destination_pattern = os.path.join(targetdir, source_pattern)
+
+            gdal_utils.save_tiff_file(destination_pattern + "_ndwi.TIF", indices["ndwi"])
+            gdal_utils.save_tiff_file(destination_pattern + "_mndwi.TIF", indices["mndwi"])
+
+    def calculate_ndvi_old(self, file_pattern):
         print("Calculating NDVI")
         band_files = self.get_band_file_names((file_pattern))
         band_data = self.load_band_data(band_files)

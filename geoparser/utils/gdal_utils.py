@@ -25,18 +25,19 @@ def save_tiff_file(file_name, data, create_jpeg = True):
     rows = len(data[0])
     cols = len(data)
 
-    outdata = driver.Create(file_name, rows, cols, 1, gdal.GDT_UInt16)
+    print("Saving to ", file_name)
 
+    outdata = driver.Create(file_name, rows, cols, 1, gdal.GDT_UInt16)
     outdata.GetRasterBand(1).WriteArray(data)
     print(outdata.GetRasterBand(1).GetStatistics(True, True))
 
     jpeg_file_name = file_name.replace(".TIF", ".png").replace(".tif", ".png")
 
-    ds = gdal.Translate(jpeg_file_name, outdata, bandList=[1], rgbExpand="gray", scaleParams=[[]])
-    print("NEWDATA:::", ds.GetRasterBand(1).GetStatistics(True, True))
+    jpg = gdal.Translate(jpeg_file_name, outdata, outputType=gdalconst.GDT_Byte, format="png",
+                         scaleParams=[[]])
 
-    ds.FlushCache()
-    outdata.FlushCache()  ##saves to disk!!
+    outdata.FlushCache()
+    jpg.FlushCache()
 
 
 

@@ -35,4 +35,5 @@ pip install -r requirements.txt
 
 ```shell
 python ./geoparser/cli/cli.py landsat extract-tiles /data/landsat /data/landsat-tiles
+python ./geoparser/cli/cli.py indices extract-ndvi /data/landsat /data/landsat-tiles
 ```
