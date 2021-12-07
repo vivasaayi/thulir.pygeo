@@ -80,7 +80,7 @@ class LandsatDataUtils:
         s3_client = S3Client()
         s3_client.download_file(self._bucket, file_name, target_file_name)
 
-    def get_band_file_names(self, file_pattern):
+    def get_band_file_names(self, source_dir, file_pattern):
         # This can be extracted from the mtl.json
         band_file_names = {}
 
@@ -88,7 +88,7 @@ class LandsatDataUtils:
             if(ix == 9 or ix == 8):
                 continue
             key = "b" + str(ix)
-            band_file_names[key] = os.path.join(file_pattern + "_T1_SR_B" + str(ix) + ".TIF")
+            band_file_names[key] = os.path.join(source_dir + "_T1_SR_B" + str(ix) + ".TIF")
 
         print(band_file_names)
         return band_file_names
@@ -114,7 +114,7 @@ class LandsatDataUtils:
 
             source_pattern = source_file.replace("_T1_SR_B1.TIF", "")
 
-            band_files = self.get_band_file_names(source_pattern)
+            band_files = self.get_band_file_names(dirname, source_pattern)
             band_data = self.load_band_data(band_files)
 
             ix_calculator = IndexCalculator()
