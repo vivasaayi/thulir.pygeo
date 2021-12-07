@@ -8,11 +8,13 @@ def translate_geotiff(source_file_name, destination_file_name, create_jpeg = Tru
     #  gdal_translate -ot Byte -of png -srcwin 2200 1500 1000 1000 -scale 1 65455 0 255
     #  ./landsat_data/LC08_L2SP_030031_20210927_20211001_02_T1_SR_B1.TIF
     #  ./results/LC08_L2SP_030031_20210927_20211001_02_T1_SR_B1.png
+
+    offsets = [2000, 2500, 1000, 800]
     print(">>> Writing ", destination_file_name)
-    tiff = gdal.Translate(destination_file_name, ds, srcWin=[2200, 1500, 1000, 1000])
+    tiff = gdal.Translate(destination_file_name, ds, srcWin=offsets)
     tiff.FlushCache()
 
-    jpg = gdal.Translate(jpeg_file_name, ds, outputType=gdalconst.GDT_Byte, format="png", srcWin=[2200, 1500, 1000, 1000],
+    jpg = gdal.Translate(jpeg_file_name, ds, outputType=gdalconst.GDT_Byte, format="png", srcWin=offsets,
                          scaleParams=[[]])
     print(">>> Writing ", jpeg_file_name)
     jpg.FlushCache()
