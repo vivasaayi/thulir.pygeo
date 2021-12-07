@@ -3,6 +3,8 @@ services:
   base: &base
     image: thulirpygeo
     working_dir: /code
+    ports:
+      - 8888:8888
     volumes:
       - .:/code
   env:

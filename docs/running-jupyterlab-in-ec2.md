@@ -13,14 +13,12 @@ cd  thulir.pygeo
 make build
 ```
 
-## Run the Docker Container
+## Run the Jupyterlab
 
 ```shell
-make run
+make jupyterlab 
 ```
 
 ## Access Juputerlab
 
-```shell
-
-```
+Follow the instructions on the logs

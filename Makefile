@@ -18,4 +18,4 @@ run:
 	@docker-compose run run
 
 jupyterlab:
-	@docker-compose run
+	@docker-compose up jupyterlab
