@@ -28,6 +28,7 @@ services:
   jupyterlab:
     <<: *base
     volumes:
+      - .:/code
       - /data:/data
 
 volumes:
