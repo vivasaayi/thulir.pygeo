@@ -6,7 +6,7 @@ services:
     ports:
       - 8888:8888
     volumes:
-      - .:/code
+      - ${PWD}:/code
   env:
     <<: *base
     command: env
