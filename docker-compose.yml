@@ -27,6 +27,8 @@ services:
     command: ls
   jupyterlab:
     <<: *base
+    volumes:
+      - /data:/data
 
 volumes:
   logvolume01: {}
