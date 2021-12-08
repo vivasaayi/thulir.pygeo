@@ -59,14 +59,9 @@ class LandsatDataUtils:
             return
 
         print("Processing file", source_file)
-        # dataset = gdal.Open(source_file_path)
-        # data = dataset.ReadAsArray().astype(np.float)
-        # n_data = data[2200:3200, 1500:2500]
-        # del dataset
 
         dest_file_name = os.path.join(destination_folder, source_file_name)
         gdal_utils.translate_geotiff(source_file_path, dest_file_name)
-        # gdal_utils.save_tiff_file(os.path.join(destination_folder, source_file_name), n_data)
 
     def download_file(self, file_name, destination_folder):
         os.makedirs(destination_folder, exist_ok=True)

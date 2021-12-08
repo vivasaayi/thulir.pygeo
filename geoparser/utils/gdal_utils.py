@@ -9,7 +9,7 @@ def translate_geotiff(source_file_name, destination_file_name, create_jpeg = Tru
     #  ./landsat_data/LC08_L2SP_030031_20210927_20211001_02_T1_SR_B1.TIF
     #  ./results/LC08_L2SP_030031_20210927_20211001_02_T1_SR_B1.png
 
-    offsets = [2000, 2500, 1000, 800]
+    offsets = [2000, 2500, 1000, 1000]
     print(">>> Writing ", destination_file_name)
     tiff = gdal.Translate(destination_file_name, ds, srcWin=offsets)
     tiff.FlushCache()
